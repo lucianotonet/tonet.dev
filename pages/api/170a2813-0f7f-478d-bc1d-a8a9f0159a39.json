@@ -1,0 +1,139 @@
+{
+	"data": [
+		{
+			"color": "#4F5D95",
+			"name": "PHP",
+			"percent": 57.16
+		},
+		{
+			"color": "#16ce40",
+			"name": "Blade Template",
+			"percent": 19.75
+		},
+		{
+			"color": "#dc9658",
+			"name": "Vue.js",
+			"percent": 5.61
+		},
+		{
+			"color": "#d62728",
+			"name": "Bash",
+			"percent": 4.36
+		},
+		{
+			"color": "#9467bd",
+			"name": "JSON",
+			"percent": 2.99
+		},
+		{
+			"color": "#1f9aef",
+			"name": "Other",
+			"percent": 2.93
+		},
+		{
+			"color": "#f1e05a",
+			"name": "JavaScript",
+			"percent": 2.05
+		},
+		{
+			"color": "#083fa1",
+			"name": "Markdown",
+			"percent": 1.15
+		},
+		{
+			"color": "#cb171e",
+			"name": "YAML",
+			"percent": 0.78
+		},
+		{
+			"color": "#563d7c",
+			"name": "CSS",
+			"percent": 0.72
+		},
+		{
+			"color": "#31859c",
+			"name": "TypeScript",
+			"percent": 0.7
+		},
+		{
+			"color": "#8c564b",
+			"name": "CSV",
+			"percent": 0.61
+		},
+		{
+			"color": "#e44b23",
+			"name": "HTML",
+			"percent": 0.29
+		},
+		{
+			"color": "#c6538c",
+			"name": "SCSS",
+			"percent": 0.17
+		},
+		{
+			"color": "#aec7e8",
+			"name": "XML",
+			"percent": 0.12
+		},
+		{
+			"color": "#e377c2",
+			"name": "INI",
+			"percent": 0.12
+		},
+		{
+			"color": "#f7b6d2",
+			"name": "Apache Config",
+			"percent": 0.11
+		},
+		{
+			"color": "#7f7f7f",
+			"name": "Git Config",
+			"percent": 0.11
+		},
+		{
+			"color": "#c7c7c7",
+			"name": "Text",
+			"percent": 0.11
+		},
+		{
+			"color": "#3581ba",
+			"name": "Python",
+			"percent": 0.08
+		},
+		{
+			"color": "#bcbd22",
+			"name": "Git",
+			"percent": 0.04
+		},
+		{
+			"color": "#dbdb8d",
+			"name": "MDX",
+			"percent": 0.01
+		},
+		{
+			"color": "#17becf",
+			"name": "Nginx configuration file",
+			"percent": 0.01
+		},
+		{
+			"color": "#9edae5",
+			"name": "Diff",
+			"percent": 0.0
+		},
+		{
+			"color": "#ffbb78",
+			"name": ".env file",
+			"percent": 0.0
+		},
+		{
+			"color": "#C1F12E",
+			"name": "Batchfile",
+			"percent": 0.0
+		},
+		{
+			"color": "#98df8a",
+			"name": "TSConfig",
+			"percent": 0.0
+		}
+	]
+}

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+article.prose img {
+	@apply object-cover rounded mx-auto lg:scale-105 my-6;
+}
