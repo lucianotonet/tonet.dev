@@ -1,5 +1,6 @@
 export default defineEventHandler(async (event) => {
-  const repo = event.context.params.slug
+  let repo = event.context.params.slug
+  repo = repo.replace('.json', '');
 
   const runtimeConfig = useRuntimeConfig();
   const githubToken = runtimeConfig.githubToken;
@@ -16,5 +17,5 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Erro ao buscar versões' });
   }
 
-  return response.map(release => release.name);
+  return response;
 });

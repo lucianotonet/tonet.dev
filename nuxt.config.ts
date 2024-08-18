@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   generate: {
     routes: [
-      '/api/github/tags/lucianotonet/groq-php',
-      '/api/github/tags/lucianotonet/groq-laravel',
+      '/api/github/tags/lucianotonet/groq-php.json',
+      '/api/github/tags/lucianotonet/groq-laravel.json',
 
       '/api/github/contents/lucianotonet/groq-php/main',
       '/api/github/contents/lucianotonet/groq-php/v0-0-8',
