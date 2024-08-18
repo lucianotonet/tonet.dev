@@ -5,7 +5,10 @@
 </template>
 
 <script setup>
-useHead({
-    title: 'Minhas Habilidades'
-});
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+onMounted(() => {
+    route.meta.title = 'Skills'
+})
 </script>

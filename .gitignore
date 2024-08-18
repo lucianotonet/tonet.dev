@@ -93,3 +93,6 @@ sw.*
 
 # Vercel
 .vercel
+
+project_to_md.py
+proj2md.py

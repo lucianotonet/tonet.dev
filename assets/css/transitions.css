@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
     animation-duration: 0.25s;

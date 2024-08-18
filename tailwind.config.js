@@ -7,18 +7,23 @@ module.exports = {
 		"./pages/**/*.vue",
 		"./plugins/**/*.{js,ts}",
 		"./nuxt.config.{js,ts}",
+		"./app.vue",
 	],
 	theme: {
 		extend: {
 			colors: {
-				'white': '#fffde7', // Amarelado menos intenso
-				'black': '#0d0d0d', // Preto um pouco mais escuro
+				'white': '#fffde7',
+				'black': '#0d0d0d',
 			},
 			spacing: {
-				'1': '0.25rem', // Reduzir espaçamento vertical
-				'2': '0.5rem',  // Reduzir espaçamento vertical
-				'3': '0.75rem', // Reduzir espaçamento vertical
-				'4': '1rem',    // Reduzir espaçamento vertical
+				'1': '0.25rem',
+				'2': '0.5rem',
+				'3': '0.75rem',
+				'4': '1rem',
+			},
+			fontFamily: {
+				sans: ['Fira Code', 'sans-serif'], // Fonte sans-serif mais bela
+				mono: ['Fira Code', 'sans-serif'], // Fonte sans-serif mais bela
 			},
 		},
 	},

@@ -5,7 +5,10 @@
 </template>
 
 <script setup>
-useHead({
-    title: 'Works'
-});
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+onMounted(() => {
+    route.meta.title = 'Works'
+})
 </script>

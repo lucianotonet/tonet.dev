@@ -3,118 +3,167 @@
 @tailwind utilities;
 
 article.prose img {
-	@apply object-cover rounded mx-auto lg:scale-105 my-6;
+    @apply object-cover rounded mx-auto lg:scale-105 my-6;
 }
 
 .title {
-	@apply text-xl font-bold mb-2;
+    @apply text-xl font-bold mb-2;
 }
 
 .card-enter-active,
 .card-leave-active {
-	transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .card-enter-from,
 .card-leave-to {
-	opacity: 0;
-	transform: scale(0.95);
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 .prose {
-    --tw-prose-body: #7a6e00; /* Cor do texto - tom amarelado menos intenso */
-    --tw-prose-headings: #3b2e00; /* Cor dos títulos - tom amarelado mais escuro e em destaque */
-    --tw-prose-lead: #5c4d00; /* Cor do texto de destaque - tom amarelado */
-    --tw-prose-links: #3b2e00; /* Cor dos links - tom amarelado mais escuro */
-    --tw-prose-bold: #3b2e00; /* Cor do texto em negrito - tom amarelado mais escuro */
-    --tw-prose-counters: #8a7f00; /* Cor dos contadores - tom amarelado */
-    --tw-prose-bullets: #e0d5b8; /* Cor das bolinhas - tom amarelado claro */
-    --tw-prose-hr: #f0e7b5; /* Cor da linha horizontal - tom amarelado claro */
-    --tw-prose-quotes: #3b2e00; /* Cor das citações - tom amarelado mais escuro */
-    --tw-prose-quote-borders: #f0e7b5; /* Cor das bordas das citações - tom amarelado claro */
-    --tw-prose-captions: #8a7f00; /* Cor das legendas - tom amarelado */
-    --tw-prose-kbd: #3b2e00; /* Cor do texto em teclado - tom amarelado mais escuro */
-    --tw-prose-kbd-shadows: 17 24 39; /* Sombra do texto em teclado */
-    --tw-prose-code: #3b2e00; /* Cor do código - tom amarelado mais escuro */
-    --tw-prose-pre-code: #f0e7b5; /* Cor do código pré-formatado - tom amarelado claro */
-    --tw-prose-pre-bg: #1f2937; /* Cor de fundo do bloco de código */
-    --tw-prose-th-borders: #e0d5b8; /* Cor das bordas das células de cabeçalho - tom amarelado claro */
-    --tw-prose-td-borders: #f0e7b5; /* Cor das bordas das células - tom amarelado claro */
-    --tw-prose-invert-body: #e0d5b8; /* Cor do texto em modo invertido - tom amarelado claro */
-    --tw-prose-invert-headings: #fff; /* Cor dos títulos em modo invertido */
-    --tw-prose-invert-lead: #d1c8a0; /* Cor do texto de destaque em modo invertido - tom amarelado claro */
-    --tw-prose-invert-links: #fff; /* Cor dos links em modo invertido */
-    --tw-prose-invert-bold: #fff; /* Cor do texto em negrito em modo invertido */
-    --tw-prose-invert-counters: #d1c8a0; /* Cor dos contadores em modo invertido - tom amarelado claro */
-    --tw-prose-invert-bullets: #8a7f00; /* Cor das bolinhas em modo invertido - tom amarelado */
-    --tw-prose-invert-hr: #5c4d00; /* Cor da linha horizontal em modo invertido - tom amarelado */
-    --tw-prose-invert-quotes: #f3f4f6; /* Cor das citações em modo invertido */
-    --tw-prose-invert-quote-borders: #5c4d00; /* Cor das bordas das citações em modo invertido - tom amarelado */
-    --tw-prose-invert-captions: #d1c8a0; /* Cor das legendas em modo invertido - tom amarelado claro */
-    --tw-prose-invert-kbd: #fff; /* Cor do texto em teclado em modo invertido */
-    --tw-prose-invert-kbd-shadows: 255 255 255; /* Sombra do texto em teclado em modo invertido */
-    --tw-prose-invert-code: #fff; /* Cor do código em modo invertido */
-    --tw-prose-invert-pre-code: #e0d5b8; /* Cor do código pré-formatado em modo invertido - tom amarelado claro */
-    --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%); /* Cor de fundo do bloco de código em modo invertido */
-    --tw-prose-invert-th-borders: #8a7f00; /* Cor das bordas das células de cabeçalho em modo invertido - tom amarelado */
-    --tw-prose-invert-td-borders: #5c4d00; /* Cor das bordas das células em modo invertido - tom amarelado */
-    font-size: 1.15rem; /* Tamanho da fonte aumentado para títulos grandes */
-    line-height: 1.1; /* Altura da linha ajustada para espaçamentos pequenos */
-    margin: 1rem auto; /* Espaçamento pequeno entre os elementos */
-    padding: 0.25rem; /* Espaçamento pequeno interno */
+    --tw-prose-body: #7a6e00;
+    --tw-prose-headings: #3b2e00;
+    --tw-prose-lead: #5c4d00;
+    --tw-prose-links: #3b2e00;
+    --tw-prose-bold: #3b2e00;
+    --tw-prose-counters: #8a7f00;
+    --tw-prose-bullets: #e0d5b8;
+    --tw-prose-hr: #f0e7b5;
+    --tw-prose-quotes: #3b2e00;
+    --tw-prose-quote-borders: #f0e7b5;
+    --tw-prose-captions: #8a7f00;
+    --tw-prose-kbd: #3b2e00;
+    --tw-prose-kbd-shadows: 17 24 39;
+    --tw-prose-code: #3b2e00;
+    --tw-prose-pre-code: #f0e7b5;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-th-borders: #e0d5b8;
+    --tw-prose-td-borders: #f0e7b5;
+    --tw-prose-invert-body: #e0d5b8;
+    --tw-prose-invert-headings: #fffde7;
+    --tw-prose-invert-lead: #d1c8a0;
+    --tw-prose-invert-links: #fffde7;
+    --tw-prose-invert-bold: #fffde7;
+    --tw-prose-invert-counters: #d1c8a0;
+    --tw-prose-invert-bullets: #8a7f00;
+    --tw-prose-invert-hr: #5c4d00;
+    --tw-prose-invert-quotes: #f3f4f6;
+    --tw-prose-invert-quote-borders: #5c4d00;
+    --tw-prose-invert-captions: #d1c8a0;
+    --tw-prose-invert-kbd: #fffde7;
+    --tw-prose-invert-kbd-shadows: 255 255 255;
+    --tw-prose-invert-code: #fffde7;
+    --tw-prose-invert-pre-code: #e0d5b8;
+    --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
+    --tw-prose-invert-th-borders: #8a7f00;
+    --tw-prose-invert-td-borders: #5c4d00;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 1rem auto;
+    padding: 0.25rem;
 }
 
-.prose h1 {
-    margin-top: 1.5rem; /* Espaço superior aumentado para h1 */
-    margin-bottom: 0.8rem; /* Espaço inferior aumentado para h1 */
-    padding-top: 1rem; /* Espaçamento interno aumentado para h1 */
-    padding-bottom: 0; 
-    font-size: 3.7rem; /* Tamanho da fonte aumentado para h1 */
-}
-
-.prose h2 {
-    margin-top: 1.2rem; /* Espaço superior aumentado para h2 */
-    margin-bottom: 0.6rem; /* Espaço inferior aumentado para h2 */
-    padding-top: 0.8rem; /* Espaçamento interno aumentado para h2 */
-    padding-bottom: 0; 
-    font-size: 2.2rem; /* Tamanho da fonte ajustado para h2 */
-}
-
-.prose h3 {
-    margin-top: 1rem; /* Espaço superior aumentado para h3 */
-    margin-bottom: 0.4rem; /* Espaço inferior aumentado para h3 */
-    padding-top: 0.6rem; /* Espaçamento interno aumentado para h3 */
-    padding-bottom: 0; 
-    font-size: 1.8rem; /* Tamanho da fonte ajustado para h3 */
-}
-
-.prose h4 {
-    margin-top: 0.8rem; /* Espaço superior aumentado para h4 */
-    margin-bottom: 0.4rem; /* Espaço inferior aumentado para h4 */
-    padding-top: 0.4rem; /* Espaçamento interno aumentado para h4 */
-    padding-bottom: 0; 
-    font-size: 1.6rem; /* Tamanho da fonte ajustado para h4 */
-}
-
-.prose h5 {
-    margin-top: 0.6rem; /* Espaço superior aumentado para h5 */
-    margin-bottom: 0.2rem; /* Espaço inferior aumentado para h5 */
-    padding-top: 0.2rem; /* Espaçamento interno aumentado para h5 */
-    padding-bottom: 0; 
-    font-size: 1.25rem; /* Tamanho da fonte ajustado para h5 */
-}
-
-.prose h6 {
-    margin-top: 0.4rem; /* Espaço superior aumentado para h6 */
-    margin-bottom: 0.2rem; /* Espaço inferior mantido para h6 */
-    padding-top: 0; /* Espaçamento interno mantido para h6 */
-    padding-bottom: 0; 
-    font-size: 1rem; /* Tamanho da fonte mantido para h6 */
+.prose {
+    word-wrap: break-word;
 }
 
 .prose p {
-    margin-top: 0.6rem; /* Espaço superior aumentado para parágrafos */
-    margin-bottom: 0.4rem; /* Espaço inferior mantido para parágrafos */
-    padding-top: 0.8rem; /* Espaçamento interno mantido para parágrafos */
-    padding-bottom: 0; 
+    word-wrap: break-word;
+    display: block;
+    margin-block-start: 1em;
+    line-height: 1.5;
+}
+
+.prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+    box-sizing: content-box;
+    display: inline-flex;
+}
+
+.prose h1 {
+    margin-top: 3.0rem;
+    margin-bottom: 0.8rem;
+    padding-top: 1rem;
+    padding-bottom: 0;
+    font-size: 3.7rem;
+}
+
+.prose h1:first-child {
+
+    margin-top: 0;
+}
+
+.prose h2 {
+    margin-top: 2.8rem;
+    margin-bottom: 0.6rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0;
+    font-size: 2.2rem;
+}
+
+.prose h2:first-child {
+
+    margin-top: 0;
+}
+
+.prose h3 {
+    margin-top: 2.6rem;
+    margin-bottom: 0.4rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0;
+    font-size: 1.8rem;
+}
+
+.prose h3:first-child {
+
+    margin-top: 0;
+}
+
+.prose h4 {
+    margin-top: 2.4rem;
+    margin-bottom: 0.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0;
+    font-size: 1.6rem;
+}
+
+.prose h4:first-child {
+
+    margin-top: 0;
+}
+
+.prose h5 {
+    margin-top: 2.2rem;
+    margin-bottom: 0.2rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.prose h5:first-child {
+
+    margin-top: 0;
+}
+
+.prose h6 {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1rem;
+}
+
+.prose p {
+    margin-top: 0.6rem;
+    margin-bottom: 0.4rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0;
+}
+
+.prose pre {
+    width: calc(100% + 40px);
+    transform: translateX(-20px);
+    overflow-x: auto;
 }

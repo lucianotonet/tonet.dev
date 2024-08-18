@@ -12,11 +12,12 @@
     "@tailwindcss/typography": "^0.5.8"
   },
   "dependencies": {
-    "@nuxthq/studio": "^1.0.6",
+    "@nuxthq/studio": "^2.0.3",
+    "@radix-icons/vue": "^1.0.0",
     "highlight.js": "^11.7.0",
     "markdown-it": "^14.1.0",
     "nuxt": "^3.12.4",
     "prismjs": "^1.29.0",
-    "three": "^0.166.1"
+    "three": "^0.167.0"
   }
 }

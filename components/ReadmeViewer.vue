@@ -1,9 +1,9 @@
 <template>
-    <div class="card dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
-        active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
-        <div class="border p-10 w-full mx-auto" :style="{ viewTransitionName: 'card' }">
-            <div v-html="renderedContent" class="prose prose-xl max-w-2xl dark:prose-invert mx-auto"
-                @DOMSubtreeModified="updateAnchors"></div>
+    <div class="card dark:bg-white/5 p-5 group rounded-lg shadow-md w-full"
+        active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium"
+        :style="{ viewTransitionName: 'card' }">
+        <div class="border p-10 w-full mx-auto">
+            <div v-html="renderedContent" class="prose prose-xl max-w-2xl dark:prose-invert mx-auto"></div>
         </div>
     </div>
 </template>
@@ -11,13 +11,13 @@
 <script setup>
 import { ref, onMounted, computed, defineEmits, onBeforeUnmount, toRefs, watch } from 'vue'
 import MarkdownIt from 'markdown-it'
-import Prism from 'prismjs' // Importando o PrismJS
+import '~/assets/js/prism.js';
 import '~/assets/js/prism-custom.css';
 import 'prismjs/components/prism-markup-templating.js';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-php.js';
 
-const emit = defineEmits(['update-active-anchor']) // Emitir evento para atualizar link ativo
+const emit = defineEmits(['update-active-anchor', 'update-anchors']) // Emitir eventos para atualizar link ativo e âncoras
 const props = defineProps(['username', 'repo', 'version']) // Adicionando a prop de versão
 const readmeContent = ref('')
 const md = new MarkdownIt({
@@ -33,7 +33,11 @@ const md = new MarkdownIt({
 
 const renderedContent = computed(() => {
     const content = md.render(readmeContent.value);
-    return content.replace(/<h([1-6])>(.*?)<\/h\1>/g, (match, level, text) => {
+    // Substitui quebras de linha por espaços em branco dentro de tags <p>
+    const formattedContent = content.replace(/<p>([\s\S]*?)<\/p>/g, (match, pContent) => {
+        return `<p>${pContent.replace(/\n/g, ' ')}</p>`;
+    });
+    return formattedContent.replace(/<h([1-6])>(.*?)<\/h\1>/g, (match, level, text) => {
         const id = text.toLowerCase().replace(/\s+/g, '-');
         return `<h${level} id="${id}">${text}</h${level}>`;
     });
@@ -49,30 +53,19 @@ const updateAnchors = () => {
     emit('update-anchors', anchors)
 }
 
-const fetchReadme = async (username, repo, version = 'main') => {
-    const { public: { githubToken } } = useRuntimeConfig(); // Obtém o token de autenticação da configuração em tempo de execução
-    const url = `https://api.github.com/repos/${username}/${repo}/contents/README.md${version ? '?ref=' + version : ''}`;
-    const headers = { 
-        Accept: 'application/vnd.github.v3.raw',
-        Authorization: `Bearer ${githubToken}` // Adiciona o token de autenticação
-    };
-
+const fetchReadme = async (username, repo, version) => {
+    version = version || 'main'; // Define a versão padrão como 'main'
+    version = version.replaceAll('.', '-');
     try {
-        const response = await fetch(url, { headers });
+        const response = await $fetch('/api/github/contents/' + username + '/' + repo + '/' + version);
 
-        if (!response.ok) {
-            const errorMessage = response.status === 404
-                ? `Nenhum commit encontrado para a referência ${version}. Consulte a documentação em https://docs.github.com/v3/repos/contents/`
-                : 'A resposta da rede não foi ok';
-            throw new Error(errorMessage);
-        }
-
-        readmeContent.value = await response.text();
+        readmeContent.value = response;
     } catch (error) {
-        console.error('Erro ao buscar o README:', error);
+        console.error('Erro ao buscar o conteúdo do README:', error);
     }
-}
 
+    updateAnchors()
+}
 onMounted(() => {
     fetchReadme(props.username, props.repo, props.version); // Passando a versão para a função
 
