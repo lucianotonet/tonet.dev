@@ -72,8 +72,8 @@ const isActive = id => {
 
 const fetchVersions = async () => {
   try {
-    const response = await $fetch('api/github/tags/lucianotonet/groq-laravel');
-    releases.value = response;
+    const response = await $fetch('api/github/tags/lucianotonet/groq-laravel.json');
+    releases.value = response.map(release => release.name);
 
     const versionFromUrl = route.query.version;
     if (versionFromUrl && (releases.value.includes(versionFromUrl) || versionFromUrl === 'main')) {
