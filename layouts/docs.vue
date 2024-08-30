@@ -1,15 +1,10 @@
 <template>
-    <div class="flex-grow flex-col flex items-center justify-center relative">
+    <div class="flex-grow flex-row flex items-center justify-center relative">
         <nav class="w-1/4 p-4">
-            <h3 class="text-xl font-bold mb-4">Conteúdo</h3>
-            <ul>
-                <li v-for="anchor in anchors" :key="anchor.id" :style="{ marginLeft: (anchor.level - 1) * 15 + 'px' }" class="leading-tight">
-                    <a :href="`#${anchor.id}`" class="text-orange-500 hover:underline text-sm leading-none" :class="{ 'font-bold': isActive(anchor.id) }">{{ anchor.text }}</a>
-                </li>
-            </ul>
+            <ContentNavigation/>
         </nav>
         <div class="max-w-3xl mx-auto p-6 flex-grow">
-            <article class="prose dark:prose-invert lg:prose-xl">
+            <article class="prose dark:prose-invert lg:prose-md">
                 <slot />
             </article>
         </div>

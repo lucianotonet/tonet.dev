@@ -1,48 +1,52 @@
 <template>
-    <div class="mt-24">
-        <h1>Lista de Posts</h1>
-        <ul>
-            <li v-for="post in posts" :key="post.slug">
-                <nuxt-link :to="`/blog/${post.slug}`">{{ post.title }}</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link :to="`/blog/groq-php_-_a-blazing-fast-AI-inferece-with-PHP`">groq-php_-_a-blazing-fast-AI-inferece-with-PHP</nuxt-link>
-            </li>
-        </ul>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8">Blog</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div v-for="article in list" :key="article._path"
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <pre>{{ article._path }}</pre>
+                <NuxtLink :to="article._path" v-if="article.thumbnail">
+                    <img :src="article.thumbnail.startsWith('http') || article.thumbnail.startsWith('https') ? article.thumbnail : `/blog/${article._path.split('/').pop()}/${article.thumbnail}`"
+                        :alt="article.title" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2">{{ article.title }}</h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">{{ formatDate(article.date) }}</p>
+                        <p class="text-gray-700 dark:text-gray-200">{{ article.description }}</p>
+                    </div>
+                </NuxtLink>
+                <NuxtLink v-else :to="article._path">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2">{{ article.title }}</h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">{{ formatDate(article.date) }}</p>
+                        <p class="text-gray-700 dark:text-gray-200">{{ article.description }}</p>
+                    </div>
+                </NuxtLink>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
-const posts = ref([]);
+import { ref, onMounted } from 'vue'
+const route = useRoute()
+const { data: list } = await useAsyncData('blog-list', () => queryContent('/blog').find())
+
+const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })
+}
 
 onMounted(async () => {
-    posts.value = await fetchPosts();
+    route.meta.title = 'Blog'
+    route.meta.description = 'Artigos e tutoriais sobre desenvolvimento web e tecnologia'
 });
-
-async function fetchPosts() {
-    // Mock de busca no backend
-    const mockPosts = [
-        { slug: 'post-1', title: 'Título do Post 1' },
-        { slug: 'post-2', title: 'Título do Post 2' }
-    ];
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(mockPosts);
-        }, 1000);
-    });
-}</script>
+</script>
 
 <style scoped>
 h1 {
     color: #333;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
+div {
     margin: 10px 0;
 }
 </style>

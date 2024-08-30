@@ -4,18 +4,9 @@
       <div class="sticky top-20">
         <NuxtLink to="/" class="dark:text-white/60 text-black/60 hover:underline">&larr; Voltar</NuxtLink>
         <h2 class="text-5xl font-black mt-4 mb-8" :style="{ viewTransitionName: 'title' }">Groq-Laravel</h2>
-        <label for="version-select" class="text-xl font-bold mb-4">Versão</label>
-        <div class="flex items-center mt-2">
-          <select v-model="selectedVersion" @change="loadVersion" id="version-select"
-            class="form-select mt-1 block w-full py-2 px-3 border border-gray-300 bg-white text-black rounded-md shadow-sm focus:outline-none focus:ring-black/60 focus:border-black/60 dark:focus:ring-white/60 dark:focus:border-white/60 sm:text-sm">
-            <option value="main">main</option>
-            <option v-for="version in releases" :key="version" :value="version">{{ version }}</option>
-          </select>
-          <a :href="`https://github.com/lucianotonet/groq-laravel/releases/${selectedVersion}`" target="_blank"
-            class="ml-4 text-gray-500 hover:text-gray-700" title="Ver no GitHub">
-            <GithubLogoIcon class="h-8 w-8" />
-          </a>
-        </div>
+        
+        <VersionSwitcher @update-version="loadVersion" :repo="'groq-laravel'"/>
+        
         <div v-if="isOldVersion" class="mt-2 flex items-center">
           <span class="text-red-500 text-xs">⚠️ Versão antiga</span>
         </div>
@@ -29,6 +20,12 @@
               class="leading-tight">
               <a :href="`#${anchor.id}`" class="dark:text-white/60 text-black/60 hover:underline"
                 :style="{ fontSize: `${18 - anchor.level}px` }">{{ anchor.text }}</a>
+              <ul v-if="anchor.children.length" class="pl-4">
+                <li v-for="child in anchor.children" :key="child.id" :style="{ marginLeft: (child.level - 1) * 15 + 'px' }">
+                  <a :href="`#${child.id}`" class="dark:text-white/60 text-black/60 hover:underline"
+                    :style="{ fontSize: `${18 - child.level}px` }">{{ child.text }}</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -47,6 +44,7 @@
 import { ref, onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { GithubLogoIcon } from '@radix-icons/vue'
+import VersionSwitcher from '@/components/VersionSwitcher.vue'
 
 const route = useRoute()
 const anchors = ref([])
@@ -59,7 +57,7 @@ const isLoading = ref(false)
 const apiError = ref(false)
 
 const setAnchors = newAnchors => {
-  anchors.value = newAnchors
+  anchors.value = newAnchors.map(anchor => ({ ...anchor, children: anchor.children || [] }));
 }
 
 const setActiveAnchor = id => {
@@ -87,7 +85,7 @@ const fetchVersions = async () => {
   }
 }
 
-const loadVersion = () => {
+const loadVersion = (version) => {
   isOldVersion.value = selectedVersion.value !== releases.value[0] && selectedVersion.value !== 'main'
   isNotReleasedVersion.value = selectedVersion.value === 'main';
 
@@ -125,7 +123,7 @@ onMounted(() => {
 
   route.meta.title = `Groq Laravel`
   route.meta.description = `${selectedVersion.value}`
-
+  
   // Obtém o hash da URL e posiciona o scroll
   const hash = window.location.hash.substring(1);
   if (hash) {
@@ -141,9 +139,9 @@ onMounted(() => {
   }
 })
 
-watch(selectedVersion, (newVersion) => {
-  if (newVersion) {
-    loadVersion()
-  }
+watch(selectedVersion.value, (version)=>{
+  definePageMeta({
+    title: `Groq Laravel - ${version}` // Atualiza o título da página com a versão selecionada
+  });
 })
 </script>

@@ -53,7 +53,28 @@ export default defineNuxtConfig({
     '~/assets/js/prism.css',
     '~/assets/js/prism-custom.css',
   ],  
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ]
+  modules: ['@nuxtjs/tailwindcss', "@nuxt/content"],
+  plugins: [
+    '~/plugins/markdown.js'
+  ],
+  content: {
+    // Configurações específicas para o módulo @nuxt/content
+    documentDriven: false, // Desativa o modo document-driven
+    navigation: {
+      fields: ['title', 'description', 'date']
+    },
+    markdown: {
+      // Configurações do markdown, se necessário
+    },
+    sources: {
+      // Define as fontes de conteúdo específicas
+      content: {
+        driver: 'fs',
+        base: './content'
+      }
+    },
+    ignores: [
+      // Ignora arquivos ou diretórios específicos, se necessário
+    ]
+  }
 })

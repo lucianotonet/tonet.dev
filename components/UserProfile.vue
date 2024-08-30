@@ -26,8 +26,11 @@
                         <LinkedinLogoIcon class="size-8" />
                     </a>
                 </div>
-                
-
+                <div class="flex items-center gap-2">
+                    <a href="https://x.com/lucianotonet" target="_blank" rel="noopener noreferrer">
+                        <TwitterLogoIcon class="size-8" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>

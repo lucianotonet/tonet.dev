@@ -44,13 +44,34 @@ const renderedContent = computed(() => {
 });
 
 const updateAnchors = () => {
-    const headings = document.querySelectorAll('.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6')
+    const headings = document.querySelectorAll('.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6');
     const anchors = Array.from(headings).map(heading => ({
         text: heading.innerText,
         id: heading.id || heading.innerText.toLowerCase().replace(/\s+/g, '-'),
-        level: parseInt(heading.tagName.charAt(1))
-    }))
-    emit('update-anchors', anchors)
+        level: parseInt(heading.tagName.charAt(1)),
+    }));
+
+    // Reorganiza os âncoras em uma hierarquia
+    const hierarchicalAnchors = [];
+    const stack = [];
+
+    anchors.forEach(anchor => {
+        while (stack.length && stack[stack.length - 1].level >= anchor.level) {
+            stack.pop();
+        }
+
+        const newAnchor = { ...anchor, children: [] };
+
+        if (stack.length) {
+            stack[stack.length - 1].children.push(newAnchor);
+        } else {
+            hierarchicalAnchors.push(newAnchor);
+        }
+
+        stack.push(newAnchor);
+    });
+
+    emit('update-anchors', hierarchicalAnchors);
 }
 
 const fetchReadme = async (username, repo, version) => {
