@@ -1,15 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2024-09-08',
   ssr: true,
   devtools: { enabled: false },
   generate: {
     routes: [
       '/api/github/tags/lucianotonet/groq-php.json',
       '/api/github/tags/lucianotonet/groq-laravel.json',
+      '/api/github/tags/lucianotonet/cartesia-php.json',
+
+      '/api/github/contents/lucianotonet/cartesia-php/main',
+      '/api/github/contents/lucianotonet/cartesia-php/v0-0-1',
 
       '/api/github/contents/lucianotonet/groq-php/main',
+      '/api/github/contents/lucianotonet/groq-php/v0-0-9',
       '/api/github/contents/lucianotonet/groq-php/v0-0-8',
       '/api/github/contents/lucianotonet/groq-php/v0-0-7',
       '/api/github/contents/lucianotonet/groq-php/v0-0-6',
@@ -20,6 +25,8 @@ export default defineNuxtConfig({
       '/api/github/contents/lucianotonet/groq-php/v0-0-1',
       
       '/api/github/contents/lucianotonet/groq-laravel/main',
+      '/api/github/contents/lucianotonet/groq-laravel/v0-0-9',
+      '/api/github/contents/lucianotonet/groq-laravel/v0-0-8',
       '/api/github/contents/lucianotonet/groq-laravel/v0-0-4',
       '/api/github/contents/lucianotonet/groq-laravel/v0-0-3',
       '/api/github/contents/lucianotonet/groq-laravel/v0-0-2',
@@ -49,6 +56,7 @@ export default defineNuxtConfig({
     }
   },
   css: [
+    '~/assets/css/main.css',
     '~/assets/css/transitions.css',
     '~/assets/js/prism.css',
     '~/assets/js/prism-custom.css',

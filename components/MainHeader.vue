@@ -17,7 +17,7 @@
 
                 <span v-if="$route.path !== '/'"
                     class="ml-3 leading-none font-bold text-2xl flex justify-center items-baseline tracking-tight border-l pl-4 gap-2">
-                    <span class="rounded mix-blend-exclusion">{{ pageTitle }}</span>
+                    <span class="rounded mix-blend-exclusion" :style="{ viewTransitionName: 'title' }">{{ pageTitle}}</span>
                     <small class="text-xs">{{ pageDescription }}</small>
                 </span>
             </div>

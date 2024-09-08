@@ -32,7 +32,19 @@
             <p class="text-gray-600 dark:text-gray-400" v-if="groqLaravelData">versão {{ groqLaravelData.version }} •
               {{ groqLaravelData.downloads.total }} downloads</p>
           </div>
-        </NuxtLink>        
+        </NuxtLink>
+
+        <NuxtLink to="/cartesia-php"
+          class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
+          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
+          <div class="border p-10 w-full mx-auto">
+            <h2 class="text-4xl font-black mb-4">{{ cartesiaPhpData?.title || 'Cartesia-PHP' }}</h2>
+            <p class="text-2xl text-gray-600 dark:text-gray-400" v-if="cartesiaPhpData">{{ cartesiaPhpData.description
+              }}</p>
+            <p class="text-gray-600 dark:text-gray-400" v-if="cartesiaPhpData">versão {{ cartesiaPhpData.version }} •
+              {{ cartesiaPhpData.downloads.total }} downloads</p>
+          </div>
+        </NuxtLink>
 
         <!-- <NuxtLink to="/works"
           class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
@@ -54,7 +66,7 @@
             <p class="text-2xl text-gray-600 dark:text-gray-400">Experimental AI tool</p>
           </div>
         </NuxtLink> -->
-        
+
       </div>
     </div>
   </div>
@@ -64,11 +76,13 @@
 const route = useRoute()
 const groqPhpData = ref(null);
 const groqLaravelData = ref(null);
+const cartesiaPhpData = ref(null);
 
 const fetchData = async () => {
   try {
     const phpResponse = await fetch('https://packagist.org/packages/lucianotonet/groq-php.json?v=' + Date.now());
     const laravelResponse = await fetch('https://packagist.org/packages/lucianotonet/groq-laravel.json?v=' + Date.now());
+    const cartesiaPhpResponse = await fetch('https://packagist.org/packages/lucianotonet/cartesia-php.json?v=' + Date.now());
 
     if (phpResponse.ok) {
       const data = await phpResponse.json();
@@ -84,6 +98,14 @@ const fetchData = async () => {
       const versions = Object.keys(data.package.versions);
       versions.shift(); // Remove o primeiro item (dev-main)
       groqLaravelData.value.version = versions[0]; // Acessa a próxima versão
+    }
+
+    if (cartesiaPhpResponse.ok) {
+      const data = await cartesiaPhpResponse.json();
+      cartesiaPhpData.value = data.package; // Acessa o objeto com chave "package"
+      const versions = Object.keys(data.package.versions);
+      versions.shift(); // Remove o primeiro item (dev-main)
+      cartesiaPhpData.value.version = versions[0]; // Acessa a próxima versão
     }
   } catch (error) {
     console.error('Erro ao buscar dados:', error);

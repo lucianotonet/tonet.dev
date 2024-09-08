@@ -1,9 +1,7 @@
 <template>
-    <div class="card dark:bg-white/5 p-5 group rounded-lg shadow-md w-full"
-        active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium"
-        :style="{ viewTransitionName: 'card' }">
-        <div class="border p-10 w-full mx-auto">
-            <div v-html="renderedContent" class="prose prose-xl max-w-2xl dark:prose-invert mx-auto"></div>
+    <div class="card dark:bg-white/5 p-4 group rounded-lg shadow-md w-full" :style="{ viewTransitionName: 'card' }">
+        <div class="border p-10">
+            <div v-html="renderedContent" class="prose prose-xl w-full dark:prose-invert mx-auto"></div>
         </div>
     </div>
 </template>

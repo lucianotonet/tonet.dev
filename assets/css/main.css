@@ -58,10 +58,10 @@ article.prose img {
     --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
     --tw-prose-invert-th-borders: #8a7f00;
     --tw-prose-invert-td-borders: #5c4d00;
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.4;
     margin: 1rem auto;
-    padding: 0.25rem;
+    padding: 0.2rem;
 }
 
 .prose {
@@ -72,7 +72,6 @@ article.prose img {
     word-wrap: break-word;
     display: block;
     margin-block-start: 1em;
-    line-height: 1.5;
 }
 
 .prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
@@ -87,7 +86,7 @@ article.prose img {
     margin-bottom: 0.8rem;
     padding-top: 1rem;
     padding-bottom: 0;
-    font-size: 3.7rem;
+    font-size: 2.5rem;
 }
 
 .prose h1:first-child {
@@ -100,7 +99,7 @@ article.prose img {
     margin-bottom: 0.6rem;
     padding-top: 0.8rem;
     padding-bottom: 0;
-    font-size: 2.2rem;
+    font-size: 1.9rem;
 }
 
 .prose h2:first-child {
@@ -113,7 +112,7 @@ article.prose img {
     margin-bottom: 0.4rem;
     padding-top: 0.6rem;
     padding-bottom: 0;
-    font-size: 1.8rem;
+    font-size: 1.75rem;
 }
 
 .prose h3:first-child {
@@ -126,7 +125,7 @@ article.prose img {
     margin-bottom: 0.4rem;
     padding-top: 0.4rem;
     padding-bottom: 0;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .prose h4:first-child {

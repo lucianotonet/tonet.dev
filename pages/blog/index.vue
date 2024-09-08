@@ -1,10 +1,9 @@
 <template>
-    <div class="container mx-auto px-4 py-8">
+    <div class="mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-8">Blog</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div v-for="article in list" :key="article._path"
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <pre>{{ article._path }}</pre>
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">                
                 <NuxtLink :to="article._path" v-if="article.thumbnail">
                     <img :src="article.thumbnail.startsWith('http') || article.thumbnail.startsWith('https') ? article.thumbnail : `/blog/${article._path.split('/').pop()}/${article.thumbnail}`"
                         :alt="article.title" class="w-full h-48 object-cover">

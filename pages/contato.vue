@@ -1,5 +1,5 @@
 <template>
-  <div class="container max-w-3xl mx-auto h-full flex flex-col items-center py-24 px-6 lg:px-4">
+  <div class="max-w-3xl mx-auto h-full flex flex-col items-center py-24 px-6 lg:px-4">
     <h1 class="text-5xl md:text-center font-bold mb-8">Entre em Contato!</h1>
     <p class="text-xl md:text-center mb-12">Estou aqui para ajudar você. Preencha o formulário abaixo e entrarei em
       contato o mais rápido possível!</p>

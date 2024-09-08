@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "download-docs": "node downloadDocs.js",
+    "build": "yarn download-docs && nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "yarn download-docs && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -15,6 +16,7 @@
     "@nuxt/content": "^2.13.2",
     "@nuxthq/studio": "^2.0.3",
     "@radix-icons/vue": "^1.0.0",
+    "axios": "^1.7.7",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.7.0",
     "markdown-it": "^14.1.0",

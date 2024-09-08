@@ -36,7 +36,9 @@ const isNotReleasedVersion = ref(false);
 const emit = defineEmits(['update-version']);
 const fetchVersions = async () => {
     try {
+        let url = `api/github/tags/lucianotonet/${props.repo}.json`
         const response = await $fetch(`api/github/tags/lucianotonet/${props.repo}.json`);
+        
         releases.value = response.map(release => release.name);
 
         const versionFromUrl = route.query.version;

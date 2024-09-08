@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
+  <div class="mx-auto px-4 py-8">
     <article class="prose dark:prose-invert lg:prose-xl mx-auto">
       <img v-if="page.image"
         :src="page.image.startsWith('http') || page.image.startsWith('https') ? page.image : `${path}/${page.image}`.replace('//', '/')"

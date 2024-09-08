@@ -1,13 +1,6 @@
 <template>
-    <div class="flex-grow flex-row flex items-center justify-center relative">
-        <nav class="w-1/4 p-4">
-            <ContentNavigation/>
-        </nav>
-        <div class="max-w-3xl mx-auto p-6 flex-grow">
-            <article class="prose dark:prose-invert lg:prose-md">
-                <slot />
-            </article>
-        </div>
+    <div class="flex-grow flex-col flex items-center justify-center relative">
+        <slot />
     </div>
 </template>
 

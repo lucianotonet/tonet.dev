@@ -4,12 +4,12 @@
             <!-- <li>
                 <NuxtLink to="/skills" class="hover:text-gray-400 transition-colors">Skills</NuxtLink>
             </li> -->
-            <li>
+            <!-- <li>
                 <NuxtLink to="/docs" class="hover:text-gray-400 transition-colors">Docs</NuxtLink>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <NuxtLink to="/blog" class="hover:text-gray-400 transition-colors">Blog</NuxtLink>
-            </li>
+            </li> -->
             <!-- <li>
                 <NuxtLink to="/contato" class="hover:text-gray-400 transition-colors">Contato</NuxtLink>
             </li> -->
