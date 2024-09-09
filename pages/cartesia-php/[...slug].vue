@@ -13,7 +13,7 @@
             <div class="card dark:bg-white/5 p-4 group rounded-lg shadow-md w-full"
                 :style="{ viewTransitionName: 'card' }">
                 <div class="border p-10 min-w-full">
-                    <ContentDoc class="prose prose-sm dark:prose-invert" />
+                    <ContentDoc class="prose dark:prose-invert mx-auto"/>
                 </div>
             </div>
         </div>
@@ -24,62 +24,33 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-const { path } = useRoute();
+import { ref, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
 const route = useRoute();
+const selectedVersion = ref(route.query.version || '');
 const anchors = ref([]);
-const { data: page } = await useAsyncData(`content-${path}`, () => queryContent(path).findOne());
-definePageMeta({
-    layout: 'docs'
-});
 
 const setAnchors = () => {
     anchors.value = [];
-
     const headings = document.querySelectorAll('.prose h1, .prose h2, .prose h3');
-
     headings.forEach(heading => {
         anchors.value.push({
             text: heading.textContent,
-            hash: `#${heading.id}` // Adicionando o '#' para o hash
+            hash: `#${heading.id}`
         });
     });
 };
 
-const smoothScrollTo = (hash) => {
-    const targetElement = document.querySelector(hash); // Usando hash diretamente para selecionar o elemento
+onMounted(() => {
+    setAnchors()
+})
 
-    if (targetElement) {
-        const offset = 75;
-        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-            top: elementPosition - offset,
-            behavior: 'smooth'
-        });
-        history.pushState(null, '', hash); // Atualiza a hash na URL dinamicamente
-    }
-};
+watch(() => route.path, () => {
+    setAnchors()
+})
 
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-};
-
-onMounted(async () => {
-    const versionFromUrl = route.query.version; // Obtém a versão do query string ao iniciar
-    if (versionFromUrl) {
-        selectedVersion.value = versionFromUrl; // Carrega a versão passada por query string
-    }
-
-    // route.meta.title = `Cartesia PHP`; // Usando operador de encadeamento opcional
-    // route.meta.description = page.value?.title ?? '';
-
-    if (route.hash) {
-        smoothScrollTo(route.hash); // Chama a função de scroll suave
-    }
-
-    setAnchors(); // Chama a função para definir as âncoras
+definePageMeta({
+    layout: 'docs'
 });
 </script>

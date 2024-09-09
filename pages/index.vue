@@ -1,122 +1,98 @@
 <template>
-  <div>
-
-    <div
-      class="w-full max-w-7xl gap-4 flex flex-col md:flex-row h-full items-start justify-between bg-blend-multiply pt-24 pb-48">
-      <div class="flex md:sticky top-0 flex-col">
-
+  <div class="w-full max-w-7xl mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row gap-12">
+      <div class="md:w-1/3">
         <UserProfile />
-
       </div>
-      <div class="flex flex-col px-4 md:px-0 pt-4 md:pt-12 gap-6 w-full">
-        <h3 class="text-3xl font-black mb-8">Projetos recentes:</h3>
+      <div class="md:w-2/3">
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6">{{ t('about.title') }}</h2>
+          <p class="text-lg mb-4">
+            {{ t('about.description1') }}
+          </p>
+          <p class="text-lg">
+            {{ t('about.description2') }}
+          </p>
+        </section>
 
-        <NuxtLink to="/groq-php" class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full"
-          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium"
-          :style="{ viewTransitionName: 'card' }">
-          <div class="border p-10 w-full mx-auto">
-            <h2 class="text-4xl font-black mb-4" :style="{ viewTransitionName: 'title' }">Groq-PHP</h2>
-            <p class="text-2xl text-gray-600 dark:text-gray-400" v-if="groqPhpData">{{ groqPhpData.description }}</p>
-            <p class="text-gray-600 dark:text-gray-400" v-if="groqPhpData">versão {{ groqPhpData.version }} • {{
-              groqPhpData.downloads.total }} downloads</p>
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6">{{ t('projects.title') }}</h2>
+          <div class="grid gap-6">
+            <NuxtLink v-for="project in projects" :key="project.name" :to="project.link"
+              class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300">
+              <div class="border p-6 w-full mx-auto">
+                <h3 class="text-2xl font-bold mb-2">{{ project.name }}</h3>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">{{ project.description }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  v{{ project.version }} • {{ project.downloads }} {{ t('projects.downloads') }}
+                </p>
+              </div>
+            </NuxtLink>
           </div>
-        </NuxtLink>
+        </section>
 
-        <NuxtLink to="/groq-laravel"
-          class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
-          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
-          <div class="border p-10 w-full mx-auto">
-            <h2 class="text-4xl font-black mb-4">Groq-Laravel</h2>
-            <p class="text-2xl text-gray-600 dark:text-gray-400" v-if="groqLaravelData">{{ groqLaravelData.description
-              }}</p>
-            <p class="text-gray-600 dark:text-gray-400" v-if="groqLaravelData">versão {{ groqLaravelData.version }} •
-              {{ groqLaravelData.downloads.total }} downloads</p>
+        <section>
+          <h2 class="text-3xl font-bold mb-6">{{ t('blog.title') }}</h2>
+          <div class="grid gap-6">
+            <small>Coming soon...</small>
+            <!-- <NuxtLink to="/blog/agentes-ia-laravel-groq" class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300">
+              <div class="border p-6 w-full mx-auto">
+                <h3 class="text-2xl font-bold mb-2">{{ t('blog.latestPost.title') }}</h3>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">
+                  {{ t('blog.latestPost.description') }}
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{{ t('blog.latestPost.date') }}</p>
+              </div>
+            </NuxtLink> -->
           </div>
-        </NuxtLink>
-
-        <NuxtLink to="/cartesia-php"
-          class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
-          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
-          <div class="border p-10 w-full mx-auto">
-            <h2 class="text-4xl font-black mb-4">{{ cartesiaPhpData?.title || 'Cartesia-PHP' }}</h2>
-            <p class="text-2xl text-gray-600 dark:text-gray-400" v-if="cartesiaPhpData">{{ cartesiaPhpData.description
-              }}</p>
-            <p class="text-gray-600 dark:text-gray-400" v-if="cartesiaPhpData">versão {{ cartesiaPhpData.version }} •
-              {{ cartesiaPhpData.downloads.total }} downloads</p>
-          </div>
-        </NuxtLink>
-
-        <!-- <NuxtLink to="/works"
-          class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
-          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
-          <div class="border p-10 w-full mx-auto flex justify-end">
-            Outros
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="ml-4 size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-          </div>
-        </NuxtLink> -->
-
-        <!-- <NuxtLink to="/dev-assistant"
-          class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300"
-          active-class="bg-gray-200 font-bold" exact-active-class="bg-green-200 font-medium">
-          <div class="border p-10 w-full mx-auto">
-            <h2 class="text-4xl font-black mb-4">Dev Assistant</h2>
-            <p class="text-2xl text-gray-600 dark:text-gray-400">Experimental AI tool</p>
-          </div>
-        </NuxtLink> -->
-
+        </section>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const route = useRoute()
-const groqPhpData = ref(null);
-const groqLaravelData = ref(null);
-const cartesiaPhpData = ref(null);
+import { ref, onMounted, computed } from 'vue';
+import { useLanguage } from '~/composables/useLanguage';
+import { useTranslation } from '~/utils/translations';
 
-const fetchData = async () => {
-  try {
-    const phpResponse = await fetch('https://packagist.org/packages/lucianotonet/groq-php.json?v=' + Date.now());
-    const laravelResponse = await fetch('https://packagist.org/packages/lucianotonet/groq-laravel.json?v=' + Date.now());
-    const cartesiaPhpResponse = await fetch('https://packagist.org/packages/lucianotonet/cartesia-php.json?v=' + Date.now());
+const { currentLanguage } = useLanguage();
+const { t } = computed(() => useTranslation(currentLanguage.value)).value;
 
-    if (phpResponse.ok) {
-      const data = await phpResponse.json();
-      groqPhpData.value = data.package; // Acessa o objeto com chave "package"
-      const versions = Object.keys(data.package.versions);
-      versions.shift(); // Remove o primeiro item (dev-main)
-      groqPhpData.value.version = versions[0]; // Acessa a próxima versão
+const projects = ref([
+  { name: 'Groq-PHP', link: '/groq-php', description: '', version: '0.0.0', downloads: 0 },
+  { name: 'Groq-Laravel', link: '/groq-laravel', description: '', version: '0.0.0', downloads: 0 },
+  { name: 'Cartesia-PHP', link: '/cartesia-php', description: '', version: '0.0.0', downloads: 0 },
+]);
+
+const fetchProjectData = async () => {
+  const packages = ['groq-php', 'groq-laravel', 'cartesia-php'];
+  
+  for (const pkg of packages) {
+    try {
+      const response = await fetch(`https://packagist.org/packages/lucianotonet/${pkg}.json?v=${Date.now()}`);
+      if (response.ok) {
+        const data = await response.json();
+        const project = projects.value.find(p => p.link === `/${pkg}`);
+        if (project) {
+          project.description = data.package.description;
+          const versions = Object.keys(data.package.versions);
+          versions.shift(); // Remove o primeiro item (dev-main)
+          project.version = versions[0];
+          project.downloads = data.package.downloads.total;
+        }
+      }
+    } catch (error) {
+      console.error(`Erro ao buscar dados para ${pkg}:`, error);
     }
-
-    if (laravelResponse.ok) {
-      const data = await laravelResponse.json();
-      groqLaravelData.value = data.package; // Acessa o objeto com chave "package"
-      const versions = Object.keys(data.package.versions);
-      versions.shift(); // Remove o primeiro item (dev-main)
-      groqLaravelData.value.version = versions[0]; // Acessa a próxima versão
-    }
-
-    if (cartesiaPhpResponse.ok) {
-      const data = await cartesiaPhpResponse.json();
-      cartesiaPhpData.value = data.package; // Acessa o objeto com chave "package"
-      const versions = Object.keys(data.package.versions);
-      versions.shift(); // Remove o primeiro item (dev-main)
-      cartesiaPhpData.value.version = versions[0]; // Acessa a próxima versão
-    }
-  } catch (error) {
-    console.error('Erro ao buscar dados:', error);
   }
 };
 
 onMounted(() => {
-  fetchData();
+  fetchProjectData();
 });
 
 useHead({
-  title: 'LucianoTonet.dev'
+  title: 'Luciano Tonet - Web Developer & AI Enthusiast'
 });
 </script>

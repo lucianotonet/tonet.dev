@@ -34,6 +34,6 @@ const setAnchors = (newAnchors) => {
 
 onMounted(() => {
   route.meta.title = `Groq Laravel`;
-  route.meta.description = `Documentação da última versão.`;
+  route.meta.description = ``;
 });
 </script>

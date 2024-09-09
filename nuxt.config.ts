@@ -61,9 +61,10 @@ export default defineNuxtConfig({
     '~/assets/js/prism.css',
     '~/assets/js/prism-custom.css',
   ],  
-  modules: ['@nuxtjs/tailwindcss', "@nuxt/content"],
+  modules: ['@nuxtjs/tailwindcss', "@nuxt/content", '@nuxt/image'],
   plugins: [
-    '~/plugins/markdown.js'
+    '~/plugins/markdown.js',
+    '~/plugins/prism.js'
   ],
   content: {
     // Configurações específicas para o módulo @nuxt/content
@@ -72,7 +73,10 @@ export default defineNuxtConfig({
       fields: ['title', 'description', 'date']
     },
     markdown: {
-      // Configurações do markdown, se necessário
+      // Configurações do markdown, se necessário      
+      remarkPlugins: [
+        'remark-gfm'
+      ]
     },
     sources: {
       // Define as fontes de conteúdo específicas
@@ -84,5 +88,5 @@ export default defineNuxtConfig({
     ignores: [
       // Ignora arquivos ou diretórios específicos, se necessário
     ]
-  }
+  },
 })

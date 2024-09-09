@@ -1,0 +1,22 @@
+{
+  "about": {
+    "title": "Sobre Mim",
+    "description1": "Olá! Sou Luciano Tonet, um desenvolvedor web apaixonado por criar soluções inovadoras e eficientes. Com uma sólida experiência em PHP, Laravel e Vue.js, estou sempre em busca de novos desafios e oportunidades para aprender e crescer.",
+    "description2": "Minha jornada no desenvolvimento de software me levou a explorar diversas tecnologias e frameworks, sempre com o objetivo de entregar produtos de alta qualidade que resolvam problemas reais. Atualmente, estou focado em integrar tecnologias de IA em aplicações web, buscando criar experiências mais inteligentes e personalizadas."
+  },
+  "projects": {
+    "title": "Projetos Recentes",
+    "version": "v",
+    "downloads": "downloads"
+  },
+  "blog": {
+    "title": "Blog",
+    "latestPost": {
+      "title": "Agentes de IA com Laravel",
+      "description": "Explorando a criação de agentes de IA usando Laravel e Groq",
+      "date": "30 de Agosto, 2024"
+    }
+  },
+  "skills": "Habilidades",
+  "language": "Idioma"
+}

@@ -4,7 +4,7 @@
         <p class="meta">Por {{ post.author }} em {{ new Date(post.date).toLocaleDateString('pt-BR') }}</p>
         <!-- <div v-html="$md(post.content)"></div> -->
 
-        <ContentDoc />
+        <ContentDoc class="prose dark:prose-invert mx-auto"/>
     </article>
 </template>
 

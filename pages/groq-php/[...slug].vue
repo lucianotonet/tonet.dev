@@ -12,7 +12,7 @@
             <div class="card dark:bg-white/5 p-4 group rounded-lg shadow-md w-full"
                 :style="{ viewTransitionName: 'card' }">
                 <div class="border p-10 min-w-full">
-                    <ContentDoc class="prose prose-sm dark:prose-invert" />
+                    <ContentDoc class="prose dark:prose-invert mx-auto"/>
                 </div>
             </div>
         </div>
@@ -23,21 +23,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const slug = route.params.slug?.join('/');
-const selectedVersion = ref(route.query.version || '');
-const anchors = ref([]);
+const contentHtml = ref('');
 
-definePageMeta({
-    layout: 'docs'
-});
+const fetchContent = async () => {
+    const { data } = await useAsyncData(`content-${route.path}`, () => 
+        queryContent(route.path).findOne()
+    )
+    contentHtml.value = data.value?.body?.html || ''
+}
 
 onMounted(() => {
-    if (route.hash) {
-        smoothScrollTo(route.hash);
-    }
-});
+    fetchContent()
+})
+
+watch(() => route.path, () => {
+    fetchContent()
+})
 </script>
