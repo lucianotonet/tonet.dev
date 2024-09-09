@@ -11,8 +11,10 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
+
+const { $highlightAll } = useNuxtApp()
 
 const route = useRoute()
 const { path } = useRoute()
@@ -25,5 +27,14 @@ const formatDate = (date) => {
 onMounted(() => {
     route.meta.title = 'Blog'
     route.meta.description = ''
+    nextTick(() => {
+        $highlightAll()
+    })
+})
+
+watch(() => route.path, () => {
+    nextTick(() => {
+        $highlightAll()
+    })
 })
 </script>

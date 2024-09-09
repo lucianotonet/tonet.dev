@@ -7,13 +7,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, defineEmits, onBeforeUnmount, toRefs, watch } from 'vue'
+import { ref, onMounted, computed, defineEmits, onBeforeUnmount, toRefs, watch, nextTick } from 'vue'
 import MarkdownIt from 'markdown-it'
 import '~/assets/js/prism.js';
 import '~/assets/js/prism-custom.css';
 import 'prismjs/components/prism-markup-templating.js';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-php.js';
+
+const { $highlightAll } = useNuxtApp()
 
 const emit = defineEmits(['update-active-anchor', 'update-anchors']) // Emitir eventos para atualizar link ativo e âncoras
 const props = defineProps(['username', 'repo', 'version']) // Adicionando a prop de versão
@@ -133,5 +135,11 @@ onMounted(() => {
 
 watch(() => props.version, (newVersion) => {
     fetchReadme(props.username, props.repo, newVersion)
+})
+
+watch(() => readmeContent.value, () => {
+    nextTick(() => {
+        $highlightAll()
+    })
 })
 </script>

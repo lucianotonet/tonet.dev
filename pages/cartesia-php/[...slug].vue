@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -40,6 +40,9 @@ const setAnchors = () => {
             hash: `#${heading.id}`
         });
     });
+    nextTick(() => {
+        
+    })
 };
 
 onMounted(() => {

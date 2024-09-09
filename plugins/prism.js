@@ -20,7 +20,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   return {
     provide: {
-      prism: Prism
+      prism: Prism,
+      highlightAll: () => {
+        Prism.highlightAll()
+      }
     }
   }
 })

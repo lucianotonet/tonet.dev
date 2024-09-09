@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -34,6 +34,9 @@ const fetchContent = async () => {
         queryContent(route.path).findOne()
     )
     contentHtml.value = data.value?.body?.html || ''
+    nextTick(() => {
+
+    })
 }
 
 onMounted(() => {
