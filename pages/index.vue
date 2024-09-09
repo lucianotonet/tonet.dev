@@ -7,12 +7,8 @@
       <div class="md:w-2/3">
         <section class="mb-12">
           <h2 class="text-3xl font-bold mb-6">{{ t('about.title') }}</h2>
-          <p class="text-lg mb-4">
-            {{ t('about.description1') }}
-          </p>
-          <p class="text-lg">
-            {{ t('about.description2') }}
-          </p>
+          <p class="text-lg mb-4">{{ t('about.description1') }}</p>
+          <p class="text-lg">{{ t('about.description2') }}</p>
         </section>
 
         <section class="mb-12">

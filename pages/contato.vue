@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-3xl mx-auto h-full flex flex-col items-center py-24 px-6 lg:px-4">
+  <div class="max-w-3xl mx-auto h-full flex flex-col items-center py-12 px-4 lg:px-6">
     <h1 class="text-5xl md:text-center font-bold mb-8">Entre em Contato!</h1>
     <p class="text-xl md:text-center mb-12">Estou aqui para ajudar você. Preencha o formulário abaixo e entrarei em
       contato o mais rápido possível!</p>
@@ -27,7 +27,7 @@
       </div>
       <div class="flex items-center justify-between">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit">
           Enviar
         </button>
@@ -37,7 +37,7 @@
     <div class="mt-12 text-center">
       <h2 class="text-3xl font-semibold mb-4">Onde me encontrar</h2>
       <p class="text-lg">Você também pode me achar pelas redes sociais:</p>
-      <div class="flex justify-center space-x-4 mt-4">
+      <div class="flex flex-col md:flex-row justify-center space-x-0 md:space-x-4 mt-4">
         <a href="https://github.com/lucianotonet/" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
         <a href="https://www.linkedin.com/in/lucianotonet/" target="_blank"
           class="text-blue-600 hover:underline">LinkedIn</a>

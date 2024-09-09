@@ -1,6 +1,6 @@
 <template>
-    <nav v-if="anchors.length" class="sticky top-20 sidebar mt-8 text-xs">
-        <h3 class="uppercase  font-bold mb-4">Content</h3>
+    <nav v-if="anchors.length" class="sticky top-20 sidebar mt-8 text-xs w-full">
+        <h3 class="uppercase font-bold mb-4">Content</h3>
         <ul class="flex flex-col gap-1">
             <li v-for="anchor in anchors" :key="anchor.hash"
                 :class="{ 'ml-2': anchor.level > 1, 'ml-4': anchor.level > 2 }">

@@ -139,7 +139,7 @@ watch(() => props.version, (newVersion) => {
 
 watch(() => readmeContent.value, () => {
     nextTick(() => {
-        $highlightAll()
+        
     })
 })
 </script>

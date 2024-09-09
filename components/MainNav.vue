@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <ul v-if="$route.path === '/'" class="flex space-x-4 border-l pl-6 mr-auto ml-5 h-10 items-center">
+        <ul v-if="$route.path === '/'" class="flex flex-col md:flex-row space-x-0 md:space-x-4 border-l pl-6 mr-auto ml-5 h-10 items-center">
             <!-- <li>
                 <NuxtLink to="/skills" class="hover:text-gray-400 transition-colors">Skills</NuxtLink>
             </li> -->
