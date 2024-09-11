@@ -1,14 +1,24 @@
-@tailwind base; @tailwind components; @tailwind utilities; article.prose img {
-    @apply object-cover rounded mx-auto lg:scale-105 my-6; }
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+article.prose img {
+    @apply object-cover rounded mx-auto lg:scale-105 my-6;
+}
 
 .title {
-    @apply text-xl font-bold mb-2; }
+    @apply text-xl font-bold mb-2;
+}
 
-.card-enter-active, .card-leave-active {
+.card-enter-active,
+.card-leave-active {
     transition: all 0.2s ease-in-out;
 }
 
-.card-enter-from, .card-leave-to {
+.card-enter-from,
+.card-leave-to {
     opacity: 0;
     transform: scale(0.95);
 }
@@ -63,7 +73,8 @@
 .prose p {
     word-wrap: break-word;
     display: block;
-    margin-block-start: 1em; }
+    margin-block-start: 1em;
+}
 
 .prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     margin-top: 0;
@@ -140,7 +151,12 @@
     font-size: 1rem;
 }
 
-.prose h1 a, .prose h2 a, .prose h3 a, .prose h4 a, .prose h5 a, .prose h6 a {
+.prose h1 a,
+.prose h2 a,
+.prose h3 a,
+.prose h4 a,
+.prose h5 a,
+.prose h6 a {
     text-decoration: none;
     font-weight: 900;
 }

@@ -22,8 +22,8 @@ module.exports = {
 				'4': '1rem',
 			},
 			fontFamily: {
-				sans: ['Fira Code', 'sans-serif'], // Fonte sans-serif mais bela
-				mono: ['Fira Code', 'sans-serif'], // Fonte sans-serif mais bela
+				sans: ['Fira Code', 'monospace'], // Fonte sans-serif mais bela
+				mono: ['Fira Code', 'monospace'], // Fonte sans-serif mais bela
 			},
 		},
 	},
