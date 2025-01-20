@@ -1,21 +1,27 @@
 export default defineEventHandler(async (event) => {
-  let repo = event.context.params.slug
-  repo = repo.replace('.json', '');
+  try {
+    let repo = event.context.params.slug
+    repo = repo.replace('.json', '');
 
-  const runtimeConfig = useRuntimeConfig();
-  const githubToken = runtimeConfig.githubToken;
+    const runtimeConfig = useRuntimeConfig();
+    const githubToken = runtimeConfig.githubToken;
 
-  const response = await $fetch(`https://api.github.com/repos/${repo}/tags`, {
-    headers: {
-      'Authorization': `Bearer ${githubToken}`,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28'
+    if (!githubToken) {
+      console.warn('GitHub token não encontrado');
+      return [];
     }
-  });
 
-  if (!response) {
-    throw createError({ statusCode: 404, statusMessage: 'Erro ao buscar versões' });
+    const response = await $fetch(`https://api.github.com/repos/${repo}/tags`, {
+      headers: {
+        'Authorization': `token ${githubToken}`,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28'
+      }
+    });
+
+    return response || [];
+  } catch (error) {
+    console.error('Erro ao buscar tags:', error);
+    return [];
   }
-
-  return response;
 });

@@ -1,10 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "download-docs": "node downloadDocs.js",
-    "build": "yarn download-docs && nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "yarn download-docs && nuxt generate",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "start": "node .output/server/index.mjs"

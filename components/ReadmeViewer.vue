@@ -75,17 +75,22 @@ const updateAnchors = () => {
 }
 
 const fetchReadme = async (username, repo, version) => {
-    version = version || 'main'; // Define a versão padrão como 'main'
+    version = version || 'main';
     version = version.replaceAll('.', '-');
     try {
         const response = await $fetch('/api/github/contents/' + username + '/' + repo + '/' + version);
-
-        readmeContent.value = response;
+        
+        if (response) {
+            readmeContent.value = response;
+        } else {
+            readmeContent.value = '# Documentação não encontrada\n\nA documentação para esta versão não está disponível no momento.';
+        }
     } catch (error) {
         console.error('Erro ao buscar o conteúdo do README:', error);
+        readmeContent.value = '# Erro\n\nOcorreu um erro ao carregar a documentação.';
     }
 
-    updateAnchors()
+    updateAnchors();
 }
 onMounted(() => {
     fetchReadme(props.username, props.repo, props.version); // Passando a versão para a função
