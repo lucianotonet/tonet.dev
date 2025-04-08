@@ -5,11 +5,12 @@
     "dev": "set NODE_OPTIONS=--no-deprecation && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "ROLLUP_SKIP_NODEJS=true nuxt prepare",
     "start": "set NODE_OPTIONS=--no-deprecation && node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.2.0",
+    "@rollup/rollup-linux-x64-gnu": "4.6.1",
     "@tailwindcss/typography": "^0.5.8"
   },
   "dependencies": {

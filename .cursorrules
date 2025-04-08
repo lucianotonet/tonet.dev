@@ -3,10 +3,14 @@
 ## Ambiente
 - Plataforma: Windows 10 (versão 10.0.22000)
 - Projeto: Site tonet.dev usando Nuxt.js
+- Deploy: Vercel (ambiente Linux)
 
 ## Problemas Conhecidos
 - Pacote markdown-it (v14.1.0) gera avisos de depreciação [DEP0155] e [DEP0166] relacionados aos padrões de exportação
 - Solução implementada: Configuração de NODE_OPTIONS=--no-deprecation através de scripts package.json e/ou .env.local
+
+- Erro de build no Vercel relacionado a dependências nativas do Rollup (@rollup/rollup-linux-x64-gnu)
+- Solução implementada: Adição de ROLLUP_SKIP_NODEJS=true no script postinstall, adição explícita da dependência @rollup/rollup-linux-x64-gnu, e configuração personalizada no vercel.json
 
 ## Comandos Úteis
 - Desenvolvimento: `npm run dev`
@@ -14,4 +18,5 @@
 - Start: `npm run start`
 
 ## Observações
-- Os avisos de depreciação não afetam a funcionalidade, apenas indicam práticas que serão removidas em versões futuras do Node.js 
+- Os avisos de depreciação não afetam a funcionalidade, apenas indicam práticas que serão removidas em versões futuras do Node.js
+- O erro no Vercel está relacionado a um bug conhecido do npm (https://github.com/npm/cli/issues/4828) na gestão de dependências opcionais 
