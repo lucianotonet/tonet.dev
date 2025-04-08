@@ -2,11 +2,11 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "set NODE_OPTIONS=--no-deprecation && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "node .output/server/index.mjs"
+    "start": "set NODE_OPTIONS=--no-deprecation && node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.2.0",
@@ -24,6 +24,5 @@
     "nuxt": "^3.12.4",
     "prismjs": "^1.29.0",
     "three": "^0.167.0"
-  },
-  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
+  }
 }

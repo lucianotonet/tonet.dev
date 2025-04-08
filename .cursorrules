@@ -1,0 +1,17 @@
+# Configurações e Informações do Projeto
+
+## Ambiente
+- Plataforma: Windows 10 (versão 10.0.22000)
+- Projeto: Site tonet.dev usando Nuxt.js
+
+## Problemas Conhecidos
+- Pacote markdown-it (v14.1.0) gera avisos de depreciação [DEP0155] e [DEP0166] relacionados aos padrões de exportação
+- Solução implementada: Configuração de NODE_OPTIONS=--no-deprecation através de scripts package.json e/ou .env.local
+
+## Comandos Úteis
+- Desenvolvimento: `npm run dev`
+- Build: `npm run build`
+- Start: `npm run start`
+
+## Observações
+- Os avisos de depreciação não afetam a funcionalidade, apenas indicam práticas que serão removidas em versões futuras do Node.js 
