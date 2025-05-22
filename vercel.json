@@ -1,11 +1,19 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "nuxt.config.ts",
       "use": "@nuxtjs/vercel-builder",
       "config": {
-        "postinstall": "npm_config_platform=linux npm_config_arch=x64 npm rebuild rollup --no-save"
+        "node": {
+          "version": "18.x"
+        },
+        "buildCommand": "yarn build",
+        "postinstall": "npm_config_platform=linux npm_config_arch=x64 npm rebuild sharp rollup --no-save"
       }
     }
-  ]
+  ],
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
 } 
