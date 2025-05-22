@@ -14,7 +14,7 @@
         <section class="mb-12">
           <h2 class="text-3xl font-bold mb-6">{{ t('projects.title') }}</h2>
           <div class="grid gap-6">
-            <NuxtLink v-for="project in projects" :key="project.name" :to="project.link"
+            <a v-for="project in projects" :key="project.name" :href="project.link" target="_blank"
               class="card hover:-translate-x-1 dark:bg-white/5 p-5 group rounded-lg shadow-md w-full transform transition duration-300">
               <div class="border p-6 w-full mx-auto">
                 <h3 class="text-2xl font-bold mb-2">{{ project.name }}</h3>
@@ -23,7 +23,7 @@
                   v{{ project.version }} • {{ project.downloads }} {{ t('projects.downloads') }}
                 </p>
               </div>
-            </NuxtLink>
+            </a>
           </div>
         </section>
 
@@ -56,13 +56,13 @@ const { currentLanguage } = useLanguage();
 const { t } = computed(() => useTranslation(currentLanguage.value)).value;
 
 const projects = ref([
-  { name: 'Groq-PHP', link: '/groq-php', description: '', version: '0.0.0', downloads: 0 },
-  { name: 'Groq-Laravel', link: '/groq-laravel', description: '', version: '0.0.0', downloads: 0 },
-  { name: 'Cartesia-PHP', link: '/cartesia-php', description: '', version: '0.0.0', downloads: 0 },
+  { name: 'Groq-PHP', link: 'https://github.com/lucianotonet/groq-php', description: '', version: '0.0.0', downloads: 0 },
+  { name: 'Groq-Laravel', link: 'https://github.com/lucianotonet/groq-laravel', description: '', version: '0.0.0', downloads: 0 },
+  { name: 'Laravel Telescope MCP', link: 'https://github.com/lucianotonet/laravel-telescope-mcp', description: '', version: '0.0.0', downloads: 0 },
 ]);
 
 const fetchProjectData = async () => {
-  const packages = ['groq-php', 'groq-laravel', 'cartesia-php'];
+  const packages = ['groq-php', 'groq-laravel', 'laravel-telescope-mcp'];
   
   for (const pkg of packages) {
     try {
