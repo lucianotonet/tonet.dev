@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-09-08',
+  compatibilityDate: '2024-03-19',
   ssr: true,
   devtools: { enabled: false },
   runtimeConfig: {

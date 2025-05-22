@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "deploy": "firebase deploy --only hosting",
-    "start": "node .output/server/index.mjs"
+    "start": "nuxt start"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.2.0",
