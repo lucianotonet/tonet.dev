@@ -6,10 +6,9 @@
       "use": "@nuxtjs/vercel-builder",
       "config": {
         "node": {
-          "version": "18.x"
+          "version": "20.x"
         },
-        "buildCommand": "yarn build",
-        "postinstall": "npm_config_platform=linux npm_config_arch=x64 npm rebuild sharp rollup --no-save"
+        "buildCommand": "yarn build"
       }
     }
   ],
